@@ -1,820 +1,542 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EV2ME4P7XY"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-EV2ME4P7XY');
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S.AD — Truly, S.AD</title>
-  <meta name="description" content="S.AD — Rapper. New Zealand.">
+  <meta name="description" content="S.AD — Artist. New Zealand.">
 
-  <!-- Fonts -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EV2ME4P7XY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EV2ME4P7XY');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --white: #ffffff;
-      --off-white: #e8e8e8;
-      --dim: #555555;
-      --muted: #333333;
-      --faint: #1a1a1a;
-      --fainter: #111111;
-      --bg: #000000;
-      --border: rgba(255,255,255,0.07);
-      --border-faint: rgba(255,255,255,0.04);
-      --font-sans: 'DM Sans', sans-serif;
-      --font-mono: 'DM Mono', monospace;
-      --transition: 0.18s ease;
+      --white:       #ffffff;
+      --off-white:   #e8e8e8;
+      --dim:         #888888;
+      --muted:       #666666;
+      --faint:       #333333;
+      --fainter:     #1a1a1a;
+      --bg:          #000000;
+      --border:      rgba(255,255,255,0.08);
+      --border-faint:rgba(255,255,255,0.04);
+      --font-sans:   'DM Sans', sans-serif;
+      --font-mono:   'DM Mono', monospace;
+      --ease:        0.18s ease;
     }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body { background: var(--bg); color: var(--white); font-family: var(--font-sans); font-weight: 400; line-height: 1.6; min-height: 100vh; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; background: none; border: none; color: inherit; }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    /* NAV */
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 1.75rem 2.5rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; }
+    .wordmark { font-family: var(--font-mono); font-size: 1.2rem; color: var(--white); cursor: pointer; transition: opacity var(--ease); }
+    .wordmark:hover { opacity: 0.5; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-link { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; cursor: pointer; transition: color var(--ease); }
+    .nav-link:hover, .nav-link.active { color: var(--white); }
+    .nav-link.external::after { content: ' ↗'; font-size: 0.6rem; }
 
-    html {
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: var(--font-sans);
-      font-weight: 400;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* ─── NAV ─── */
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.75rem 2.5rem;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      z-index: 100;
-    }
-
-    .wordmark {
-      font-family: var(--font-mono);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--white);
-      cursor: pointer;
-      letter-spacing: 0;
-      transition: opacity var(--transition);
-    }
-
-    .wordmark:hover { opacity: 0.6; }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .nav-link {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      color: var(--dim);
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: color var(--transition);
-      background: none;
-      border: none;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: var(--white);
-    }
-
-    .nav-link.external::after {
-      content: ' ↗';
-      font-size: 0.6rem;
-    }
-
-    /* ─── PAGES ─── */
+    /* PAGES */
     .page { display: none; }
     .page.active { display: block; }
 
-    /* ─── HERO ─── */
-    .hero {
-      padding: 5rem 2.5rem 4rem;
-      border-bottom: 1px solid var(--border);
-    }
+    /* HERO */
+    .hero { padding: 5rem 2.5rem 4rem; border-bottom: 1px solid var(--border); }
+    .hero-eyebrow { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-bottom: 2rem; }
+    .hero-title { font-size: clamp(52px, 8vw, 80px); font-weight: 300; line-height: 0.92; letter-spacing: -0.03em; color: var(--white); margin-bottom: 1.25rem; }
+    .hero-title .sad { color: var(--faint); }
+    .hero-sub { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3rem; }
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.7rem 1.4rem; cursor: pointer; transition: background var(--ease), color var(--ease), border-color var(--ease); }
+    .btn-primary { border: 1px solid var(--white); color: var(--white); }
+    .btn-primary:hover { background: var(--white); color: var(--bg); }
+    .btn-ghost { border: 1px solid var(--faint); color: var(--dim); }
+    .btn-ghost:hover { border-color: var(--dim); color: var(--white); }
 
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-    }
-
-    .hero-title {
-      font-family: var(--font-sans);
-      font-size: clamp(52px, 8vw, 80px);
-      font-weight: 300;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
-      color: var(--white);
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-title .sad {
-      color: var(--faint);
-    }
-
-    .hero-sub {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 3rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.7rem 1.4rem;
-      cursor: pointer;
-      transition: background var(--transition), color var(--transition), border-color var(--transition);
-      border: none;
-      background: none;
-    }
-
-    .btn-primary {
-      border: 1px solid var(--white);
-      color: var(--white);
-    }
-
-    .btn-primary:hover {
-      background: var(--white);
-      color: var(--bg);
-    }
-
-    .btn-ghost {
-      border: 1px solid var(--faint);
-      color: var(--dim);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--dim);
-      color: var(--white);
-    }
-
-    /* ─── RELEASE ROWS (home) ─── */
-    .latest {
-      padding: 2.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-
-    .release-row {
-      display: flex;
-      align-items: center;
-      border-top: 1px solid var(--border-faint);
-      cursor: pointer;
-      transition: background var(--transition);
-    }
-
-    .release-row:last-child {
-      border-bottom: 1px solid var(--border-faint);
-    }
-
+    /* RELEASE ROWS */
+    .latest { padding: 2.5rem; border-bottom: 1px solid var(--border); }
+    .section-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-bottom: 1.5rem; }
+    .release-row { display: flex; align-items: center; border-top: 1px solid var(--border-faint); cursor: pointer; transition: background var(--ease); }
+    .release-row:last-child { border-bottom: 1px solid var(--border-faint); }
     .release-row:hover { background: rgba(255,255,255,0.015); }
     .release-row:hover .r-title { color: var(--off-white); }
     .release-row:hover .release-arrow { color: var(--white); }
+    .r-art { width: 60px; height: 60px; flex-shrink: 0; overflow: hidden; background: var(--fainter); }
+    .r-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .r-art-placeholder { width: 60px; height: 60px; background: var(--fainter); flex-shrink: 0; }
+    .r-info { flex: 1; padding: 1rem 1.25rem; }
+    .r-title { font-size: 0.95rem; font-weight: 500; color: var(--white); letter-spacing: 0.02em; transition: color var(--ease); }
+    .r-meta { font-family: var(--font-mono); font-size: 0.6rem; color: var(--dim); letter-spacing: 0.06em; margin-top: 0.25rem; }
+    .release-tag { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); text-transform: uppercase; border: 1px solid var(--faint); padding: 0.25rem 0.65rem; white-space: nowrap; }
+    .release-tag.coming { color: var(--faint); border-color: rgba(255,255,255,0.03); }
+    .release-arrow { font-size: 0.9rem; color: var(--muted); transition: color var(--ease); margin-left: 1rem; margin-right: 1.5rem; }
 
-    .r-art {
-      width: 60px;
-      height: 60px;
-      flex-shrink: 0;
-      overflow: hidden;
-      background: var(--fainter);
-    }
+    /* FOOTER */
+    .footer { padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
+    .footer-copy { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-link { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; transition: color var(--ease); }
+    .footer-link:hover { color: var(--white); }
 
-    .r-art img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    /* PAGE HERO */
+    .page-hero { padding: 3rem 2.5rem 2rem; border-bottom: 1px solid var(--border); }
+    .page-title { font-size: 2rem; font-weight: 400; color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.4rem; }
+    .page-desc { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.06em; line-height: 1.7; }
 
-    .r-art-placeholder {
-      width: 60px;
-      height: 60px;
-      background: var(--fainter);
-    }
-
-    .r-info {
-      flex: 1;
-      padding: 1rem 1.25rem;
-    }
-
-    .r-title {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--white);
-      letter-spacing: 0.02em;
-      transition: color var(--transition);
-    }
-
-    .r-meta {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      margin-top: 0.25rem;
-    }
-
-    .release-tag {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-transform: uppercase;
-      border: 1px solid var(--faint);
-      padding: 0.25rem 0.65rem;
-      white-space: nowrap;
-    }
-
-    .release-tag.coming {
-      color: var(--faint);
-      border-color: rgba(255,255,255,0.03);
-    }
-
-    .release-arrow {
-      font-size: 0.9rem;
-      color: var(--muted);
-      transition: color var(--transition);
-      margin-left: 1rem;
-      margin-right: 1.5rem;
-    }
-
-    /* ─── FOOTER ─── */
-    .footer {
-      padding: 1.5rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid var(--border);
-      margin-top: auto;
-    }
-
-    .footer-copy {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--faint);
-      letter-spacing: 0.06em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .footer-link {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--faint);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: color var(--transition);
-      background: none;
-      border: none;
-    }
-
-    .footer-link:hover { color: var(--dim); }
-
-    /* ─── PAGE HERO (inner pages) ─── */
-    .page-hero {
-      padding: 3rem 2.5rem 2rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .page-title {
-      font-size: 2rem;
-      font-weight: 400;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      margin-bottom: 0.4rem;
-    }
-
-    .page-desc {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      line-height: 1.7;
-    }
-
-    /* ─── UNTITLED ─── */
+    /* UNTITLED */
     .post-list { padding: 0 2.5rem; }
-
-    .post-item {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-faint);
-      cursor: pointer;
-    }
-
+    .post-item { padding: 1.5rem 0; border-bottom: 1px solid var(--border-faint); cursor: pointer; }
     .post-item:hover .post-title { color: var(--off-white); }
+    .post-date { font-family: var(--font-mono); font-size: 0.6rem; color: var(--dim); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.35rem; }
+    .post-first { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-top: 0.35rem; font-family: var(--font-sans); }
+    .post-preview { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-top: 0; max-width: 520px; display: none; }
+    .post-preview.open { display: block; }
+    .post-toggle { font-family: var(--font-mono); font-size: 0.6rem; color: var(--faint); letter-spacing: 0.1em; margin-top: 0.75rem; display: inline-block; transition: color var(--ease); }
+    .post-item:hover .post-toggle { color: var(--muted); }
+    .post-preview { font-size: 0.8rem; color: var(--muted); line-height: 1.65; margin-top: 0.5rem; max-width: 520px; display: none; }
+    .post-preview.open { display: block; }
+    .post-toggle { font-family: var(--font-mono); font-size: 0.6rem; color: var(--faint); letter-spacing: 0.1em; margin-top: 0.5rem; transition: color var(--ease); }
+    .post-item:hover .post-toggle { color: var(--muted); }
 
-    .post-date {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.35rem;
-    }
-
-    .post-title {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--white);
-      transition: color var(--transition);
-    }
-
-    .post-preview {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-top: 0.35rem;
-      max-width: 520px;
-    }
-
-    /* ─── RELEASES ─── */
-    .tab-bar {
-      display: flex;
-      border-bottom: 1px solid var(--border);
-      padding: 0 2.5rem;
-    }
-
-    .tab {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 1rem 0;
-      margin-right: 2rem;
-      cursor: pointer;
-      border-bottom: 1px solid transparent;
-      transition: color var(--transition), border-color var(--transition);
-      background: none;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-    }
-
-    .tab:hover,
-    .tab.active {
-      color: var(--white);
-      border-bottom-color: var(--white);
-    }
-
+    /* RELEASES */
+    .tab-bar { display: flex; border-bottom: 1px solid var(--border); padding: 0 2.5rem; }
+    .tab { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding: 1rem 0; margin-right: 2rem; cursor: pointer; border-bottom: 1px solid transparent; transition: color var(--ease), border-color var(--ease); border-top: none; border-left: none; border-right: none; }
+    .tab:hover, .tab.active { color: var(--white); border-bottom-color: var(--white); }
     .releases-grid { padding: 2rem 2.5rem; }
-
-    .rc {
-      display: flex;
-      border: 1px solid var(--border-faint);
-      margin-bottom: 6px;
-      cursor: pointer;
-      transition: border-color var(--transition);
-      overflow: hidden;
-    }
-
+    .releases-sublabel { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-bottom: 1rem; margin-top: 0.25rem; }
+    .rc { display: flex; border: 1px solid var(--border-faint); margin-bottom: 6px; cursor: pointer; transition: border-color var(--ease); overflow: hidden; }
     .rc:hover { border-color: var(--faint); }
-
-    .rc-art {
-      width: 96px;
-      height: 96px;
-      flex-shrink: 0;
-      overflow: hidden;
-      background: var(--fainter);
-    }
-
-    .rc-art img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .rc-body {
-      padding: 1rem 1.25rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .rc-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .rc-title {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-
-    .rc-type {
-      font-family: var(--font-mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      text-transform: uppercase;
-      border: 1px solid var(--border-faint);
-      padding: 0.2rem 0.5rem;
-      margin-top: 0.25rem;
-      display: inline-block;
-    }
-
-    .rc-year {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--muted);
-    }
-
-    .rc-meta {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .rc-meta-item {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-    }
-
-    .rc-meta-item span {
-      display: block;
-      font-size: 0.55rem;
-      color: var(--faint);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.15rem;
-    }
-
-    .rc-link {
-      color: var(--dim);
-      transition: color var(--transition);
-    }
-
+    .rc-art { width: 96px; height: 96px; flex-shrink: 0; overflow: hidden; background: var(--fainter); }
+    .rc-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .rc-body { padding: 1rem 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .rc-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .rc-title { font-size: 1.05rem; font-weight: 500; color: var(--white); letter-spacing: -0.01em; }
+    .rc-type { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.12em; color: var(--dim); text-transform: uppercase; border: 1px solid var(--border-faint); padding: 0.2rem 0.5rem; margin-top: 0.25rem; display: inline-block; }
+    .rc-year { font-family: var(--font-mono); font-size: 0.6rem; color: var(--dim); }
+    .rc-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .rc-meta-item { font-family: var(--font-mono); font-size: 0.65rem; color: var(--dim); }
+    .rc-meta-item span { display: block; font-size: 0.55rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.15rem; }
+    .rc-link { color: var(--dim); transition: color var(--ease); }
     .rc:hover .rc-link { color: var(--white); }
-
     .forthcoming { opacity: 0.35; }
 
-    .releases-sublabel {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      margin-top: 0.25rem;
-    }
+    /* DSP LINKS */
+    .dsp-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .dsp-link { font-family: var(--font-mono); font-size: 0.6rem; color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--fainter); padding: 0.2rem 0.6rem; transition: color var(--ease), border-color var(--ease); }
+    .dsp-link:hover { color: var(--white); border-color: var(--faint); }
 
-    .releases-sublabel + .releases-sublabel { margin-top: 2rem; }
+    /* ALBUM TRACKLIST */
+    .rc-tracklist { padding: 0 1.25rem 1rem; border-top: 1px solid var(--border-faint); }
+    .rc-track { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); padding: 0.3rem 0; border-bottom: 1px solid var(--border-faint); display: flex; gap: 0.75rem; }
+    .rc-track:last-child { border-bottom: none; }
+    .rc-track-num { color: var(--faint); min-width: 1.2rem; }
+    .rc-track-only { color: var(--faint); font-size: 0.55rem; margin-left: auto; letter-spacing: 0.08em; }
 
-    /* ─── STUDIOS ─── */
+    /* PLAYLISTS */
+    .playlist-list { padding: 0 2.5rem 2rem; }
+    .pl-item { display: flex; align-items: center; border-top: 1px solid var(--border-faint); cursor: pointer; transition: background var(--ease); }
+    .pl-item:last-child { border-bottom: 1px solid var(--border-faint); }
+    .pl-item:hover { background: rgba(255,255,255,0.015); }
+    .pl-item:hover .pl-title { color: var(--off-white); }
+    .pl-item:hover .release-arrow { color: var(--white); }
+    .pl-info { flex: 1; padding: 1rem 1.25rem; }
+    .pl-title { font-size: 0.95rem; font-weight: 500; color: var(--white); transition: color var(--ease); }
+    .pl-meta { font-family: var(--font-mono); font-size: 0.6rem; color: var(--dim); margin-top: 0.25rem; }
+    .pl-saves { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); white-space: nowrap; padding-right: 0.5rem; }
+
+    /* STUDIOS */
     .studios-list { padding: 0 2.5rem; }
-
-    .studios-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.4rem 0;
-      border-bottom: 1px solid var(--border-faint);
-      cursor: pointer;
-    }
-
+    .studios-row { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 0; border-bottom: 1px solid var(--border-faint); cursor: pointer; }
     .studios-row:first-child { border-top: 1px solid var(--border-faint); }
     .studios-row:hover .studios-name { color: var(--off-white); }
     .studios-row:hover .studios-ext { color: var(--white); }
+    .studios-name { font-size: 0.95rem; font-weight: 500; color: var(--white); transition: color var(--ease); }
+    .studios-type { font-family: var(--font-mono); font-size: 0.6rem; color: var(--dim); margin-top: 0.25rem; }
+    .studios-ext { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; transition: color var(--ease); }
 
-    .studios-name {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--white);
-      transition: color var(--transition);
-    }
+    /* TAB PANELS */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
 
-    .studios-type {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      margin-top: 0.25rem;
-    }
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .page.active .hero, .page.active .page-hero { animation: fadeUp 0.35s ease both; }
+    .page.active .latest, .page.active .post-list, .page.active .releases-grid, .page.active .studios-list, .page.active .playlist-list { animation: fadeUp 0.35s 0.07s ease both; }
 
-    .studios-ext {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color var(--transition);
-    }
-
-    /* ─── ANIMATIONS ─── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .page.active .hero,
-    .page.active .page-hero {
-      animation: fadeUp 0.4s ease both;
-    }
-
-    .page.active .latest,
-    .page.active .post-list,
-    .page.active .releases-grid,
-    .page.active .studios-list {
-      animation: fadeUp 0.4s 0.08s ease both;
-    }
-
-    /* ─── MOBILE ─── */
+    /* MOBILE */
     @media (max-width: 640px) {
-      .nav { padding: 1.25rem 1.25rem; }
-      .nav-links { gap: 1.1rem; }
-      .hero { padding: 3rem 1.25rem 2.5rem; }
-      .latest, .post-list, .releases-grid, .studios-list, .page-hero { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .nav { padding: 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .hero, .latest, .post-list, .releases-grid, .studios-list, .playlist-list, .page-hero { padding-left: 1.25rem; padding-right: 1.25rem; }
       .footer { padding: 1.25rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
-      .rc-meta { gap: 1rem; }
       .tab-bar { padding: 0 1.25rem; }
+      .rc-meta { gap: 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="nav">
-    <div class="wordmark" onclick="showPage('home')">:(</div>
-    <div class="nav-links">
-      <button class="nav-link active" id="nav-home"     onclick="showPage('home')">Home</button>
-      <button class="nav-link"        id="nav-untitled" onclick="showPage('untitled')">Untitled</button>
-      <button class="nav-link"        id="nav-releases" onclick="showPage('releases')">Releases</button>
-      <button class="nav-link"        id="nav-studios"  onclick="showPage('studios')">Studios</button>
-      <a      class="nav-link external" href="https://sadcollection.com" target="_blank" rel="noopener">Collections</a>
-    </div>
-  </nav>
+<nav class="nav">
+  <div class="wordmark" onclick="showPage('home')">:(</div>
+  <div class="nav-links">
+    <button class="nav-link active" id="nav-home"     onclick="showPage('home')">Home</button>
+    <button class="nav-link"        id="nav-untitled" onclick="showPage('untitled')">Untitled</button>
+    <button class="nav-link"        id="nav-releases" onclick="showPage('releases')">Releases</button>
+    <button class="nav-link"        id="nav-studios"  onclick="showPage('studios')">Studios</button>
+    <a      class="nav-link external" href="https://sadcollection.com" target="_blank" rel="noopener">Collections</a>
+  </div>
+</nav>
 
-  <!-- ═══ HOME ═══ -->
-  <div id="home" class="page active">
-    <div class="hero">
-      <div class="hero-eyebrow">Rapper · New Zealand</div>
-      <div class="hero-title">Truly,<br><span class="sad">S.AD</span></div>
-      <div class="hero-sub">Shepard, Adam Duers</div>
-      <div class="hero-actions">
-        <button class="btn btn-primary" onclick="showPage('releases')">Latest release</button>
-        <button class="btn btn-ghost"   onclick="showPage('untitled')">Untitled</button>
-        <a      class="btn btn-ghost"   href="https://sadcollection.com" target="_blank" rel="noopener">Collections ↗</a>
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="hero">
+    <div class="hero-eyebrow">Artist · New Zealand</div>
+    <div class="hero-title">Truly,<br><span class="sad">S.AD</span></div>
+    <div class="hero-sub">Shepard, Adam Duers</div>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="showPage('releases')">Latest release</button>
+      <button class="btn btn-ghost"   onclick="showPage('untitled')">Untitled</button>
+      <a      class="btn btn-ghost"   href="https://sadcollection.com" target="_blank" rel="noopener">Collections ↗</a>
+    </div>
+  </div>
+
+  <div class="latest">
+    <div class="section-label">Recent releases</div>
+    <div class="release-row" onclick="showPage('releases')">
+      <div class="r-art"><img src="/assets/sad_lo_doomed_faded_cover_400x400.webp" alt="Lo, Doomed & Faded cover art" onerror="this.style.display='none'"></div>
+      <div class="r-info">
+        <div class="r-title">Lo, Doomed &amp; Faded</div>
+        <div class="r-meta">Album · 31 Dec 2025</div>
+      </div>
+      <div class="release-tag">Out now</div>
+      <div class="release-arrow">→</div>
+    </div>
+    <div class="release-row" onclick="showPage('releases')">
+      <div class="r-art"><img src="/assets/sad_anon_cover_400x400.webp" alt="ANON cover art" onerror="this.style.display='none'"></div>
+      <div class="r-info">
+        <div class="r-title">ANON</div>
+        <div class="r-meta">Single · 30 Apr 2025</div>
+      </div>
+      <div class="release-tag">Out now</div>
+      <div class="release-arrow">→</div>
+    </div>
+    <div class="release-row" onclick="showPage('releases')">
+      <div class="r-art"><img src="/assets/sad_morals_cover_400x400.webp" alt="Morals cover art" onerror="this.style.display='none'"></div>
+      <div class="r-info">
+        <div class="r-title">Morals</div>
+        <div class="r-meta">Single · 01 Oct 2025</div>
+      </div>
+      <div class="release-tag">Out now</div>
+      <div class="release-arrow">→</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-copy">© 2023–2026 SAD Ventures Limited</div>
+    <div class="footer-links">
+      <a class="footer-link" href="https://open.spotify.com/album/3hVhExInvfNSkEo9ezOSsq?si=ISF3ClcPQaW6oba2GFgIyA" target="_blank" rel="noopener">Spotify</a>
+      <a class="footer-link" href="https://music.apple.com/nz/album/lo-doomed-faded/1857636519" target="_blank" rel="noopener">Apple Music</a>
+      <a class="footer-link" href="https://www.youtube.com/channel/UClng_uh6ncoHfBFMhzNdmZw" target="_blank" rel="noopener">Youtube</a>
+      <a class="footer-link" href="https://www.instagram.com/_trulysad/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- UNTITLED -->
+<div id="untitled" class="page">
+  <div class="page-hero">
+    <div class="section-label">S.AD</div>
+    <div class="page-title">Untitled</div>
+    <div class="page-desc">Notes, process, and perspective.</div>
+  </div>
+  <div class="post-list">
+    <div class="post-item" onclick="togglePost(this)">
+            <div class="post-date">02.06.23</div>
+      <div class="post-first">What am I writing now,</div>
+      <div class="post-preview">Everything is coming out,<br>Side of things I can't pronounce,<br>In a dream my own account,<br><br>Not looking for don't want an out,<br>Connect into my deeper self,<br>A figure I don't let him out,<br>A trigger to the way I felt,<br><br>Identify but don't allow,<br>Easier to hide the doubt,<br>Distracting what I might amount,<br>Contact and ghost is what a sought,<br><br>Invest in hope the common route,<br>Tie the rope jump from the spout,<br>The institution hangs around,<br>Can't escape what's in ourselves,<br><br>Truly,<br>SAD</div>
+      <div class="post-toggle">+ Read</div>
+    </div>
+    <div class="post-item" onclick="togglePost(this)">
+            <div class="post-date">28.05.23</div>
+      <div class="post-first">Watch me slip back into old habits,</div>
+      <div class="post-preview">I catch it but still unpacking what happen,<br>I'm spirit lacking,<br>Unhappy and I'm erratic,<br><br>Can't fathom being abandoned,<br>I'm adamantly alone,<br>Leave me inside of my home,<br>Don't leave unless I want,<br><br>It's unhealthy to assume,<br>Different beings with different cues,<br>Going out I always lose,<br>In my head theres lots of rooms,<br><br>Many paths I could pursue,<br>Very dark and full of gloom,<br>Known to me but not to you,<br>So fuck off.<br><br>Truly,<br>SAD</div>
+      <div class="post-toggle">+ Read</div>
+    </div>
+    <div class="post-item" onclick="togglePost(this)">
+            <div class="post-date">21.02.23</div>
+      <div class="post-first">When shit become just like going through motions,</div>
+      <div class="post-preview">Starting to feel like I only have one emotion,<br>I'm just artist expressing in focus,<br>In black and white a dull life is it hopeless,<br><br>A smoke I light just to cloudy the whole pic,<br>In front of mics where I only produce dope shit,<br>Caught in a fight with somebody I can't win,<br>Quite voices who hide in the open,<br><br>Was a mistake to lean into the darkness,<br>I carry lanterns a bic and a dart lit,<br>And now these places not far from where I live,<br>Can't escape them there under my eyelids,<br><br>Paved the way eyes wide open I can't miss,<br>And when I say this know that I will not quit,<br>On my grave it reads roped in he strived shit,<br>Can't argue when I spit.<br><br>Truly,<br>SAD</div>
+      <div class="post-toggle">+ Read</div>
+    </div>
+  </div>
+  <div class="footer" style="margin-top:3rem">
+    <div class="footer-copy">© 2023–2026 SAD Ventures Limited</div>
+    <div class="footer-links">
+      <a class="footer-link" href="https://open.spotify.com/artist/5hGsyji228sxPvOgRmqB62?si=cnXK65KESEeiuKkkVc1ieQ" target="_blank" rel="noopener">Spotify</a>
+      <a class="footer-link" href="https://music.apple.com/nz/artist/s-ad/1810440438" target="_blank" rel="noopener">Apple Music</a>
+      <a class="footer-link" href="https://www.youtube.com/channel/UClng_uh6ncoHfBFMhzNdmZw" target="_blank" rel="noopener">Youtube</a>
+      <a class="footer-link" href="https://www.instagram.com/_trulysad/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- RELEASES -->
+<div id="releases" class="page">
+  <div class="page-hero">
+    <div class="section-label">S.AD</div>
+    <div class="page-title">Releases</div>
+  </div>
+  <div class="tab-bar">
+    <button class="tab active" onclick="switchTab('all', this)">All</button>
+    <button class="tab" onclick="switchTab('singles', this)">Singles</button>
+    <button class="tab" onclick="switchTab('projects', this)">Projects</button>
+    <button class="tab" onclick="switchTab('playlists', this)">Playlists</button>
+  </div>
+
+  <!-- ALL -->
+  <div id="tab-all" class="tab-panel active">
+    <div class="releases-grid">
+      <div class="releases-sublabel">Albums</div>
+      <div class="rc" style="flex-direction:column">
+        <div style="display:flex">
+          <div class="rc-art"><img src="/assets/sad_lo_doomed_faded_cover_400x400.webp" alt="Lo, Doomed & Faded" onerror="this.style.display='none'"></div>
+          <div class="rc-body">
+            <div class="rc-top">
+              <div>
+                <div class="rc-title">Lo, Doomed &amp; Faded</div>
+                <div class="rc-type">Album</div>
+              </div>
+              <div class="rc-year">31 Dec 2025</div>
+            </div>
+            <div class="dsp-links">
+              <a class="dsp-link" href="https://open.spotify.com/artist/5hGsyji228sxPvOgRmqB62" target="_blank" rel="noopener">Spotify</a>
+              <a class="dsp-link" href="https://music.apple.com/nz/artist/s-ad/1810440438" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/playlist?list=OLAK5uy_nYbVmqTYMdK_EiVigg9khaC9ZphlQp31g&si=aLBfmXzC4QC9SEoR" target="_blank" rel="noopener">Youtube Music</a>
+            </div>
+          </div>
+        </div>
+        <div class="rc-tracklist">
+          <div class="rc-track"><span class="rc-track-num">1</span><span>Lo</span><span class="rc-track-only">Album only</span></div>
+          <div class="rc-track"><span class="rc-track-num">2</span><span>Doomed</span></div>
+          <div class="rc-track"><span class="rc-track-num">3</span><span>&amp;</span></div>
+          <div class="rc-track"><span class="rc-track-num">4</span><span>Faded</span></div>
+          <div class="rc-track"><span class="rc-track-num">5</span><span>ANON</span></div>
+          <div class="rc-track"><span class="rc-track-num">6</span><span>Morals</span></div>
+          <div class="rc-track"><span class="rc-track-num">7</span><span>where do we go</span><span class="rc-track-only">Album only</span></div>
+        </div>
+      </div>
+
+      <div class="releases-sublabel" style="margin-top:2rem">Singles</div>
+      <div class="rc">
+        <div class="rc-art"><img src="/assets/sad_doomed_cover_400x400.webp" alt="Doomed" onerror="this.style.display='none'"></div>
+        <div class="rc-body">
+          <div class="rc-top"><div><div class="rc-title">Doomed</div><div class="rc-type">Single</div></div><div class="rc-year">20 Dec 2025</div></div>
+          <div class="dsp-links">
+            <a class="dsp-link" href="https://open.spotify.com/album/4nYMESdOzmcIJNObmPqyhc?si=f96bEayIQJ600g6p69jRtQ" target="_blank" rel="noopener">Spotify</a>
+            <a class="dsp-link" href="https://music.apple.com/nz/album/doomed-single/1857787358" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/watch?v=t-AAdjbOYi4&si=Q9f-kOziiAIM1yKs" target="_blank" rel="noopener">Youtube Music</a>
+          </div>
+        </div>
+      </div>
+      <div class="rc">
+        <div class="rc-art"><img src="/assets/sad_morals_cover_400x400.webp" alt="Morals" onerror="this.style.display='none'"></div>
+        <div class="rc-body">
+          <div class="rc-top"><div><div class="rc-title">Morals</div><div class="rc-type">Single</div></div><div class="rc-year">01 Oct 2025</div></div>
+          <div class="dsp-links">
+            <a class="dsp-link" href="https://open.spotify.com/album/4w8eTXC9AbaHI5BdEzpP2G?si=kgitUqJzSE2lN3dte4gCZA" target="_blank" rel="noopener">Spotify</a>
+            <a class="dsp-link" href="https://music.apple.com/nz/album/morals-single/1831315341" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/watch?v=YvKa4S9_oyg&si=6zki-LYuLP7DmucO" target="_blank" rel="noopener">Youtube Music</a>
+          </div>
+        </div>
+      </div>
+      <div class="rc">
+        <div class="rc-art"><img src="/assets/sad_ampersand_cover_400x400.webp" alt="& cover art" onerror="this.style.display='none'"></div>
+        <div class="rc-body">
+          <div class="rc-top"><div><div class="rc-title">&amp;</div><div class="rc-type">Single</div></div><div class="rc-year">01 Sep 2025</div></div>
+          <div class="dsp-links">
+            <a class="dsp-link" href="https://open.spotify.com/album/383HydEzbrzOTOtXwtRWwd?si=jBA1tJ9yTw2bDrxDOEvDHA" target="_blank" rel="noopener">Spotify</a>
+            <a class="dsp-link" href="https://music.apple.com/nz/album/single/1831297753" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/watch?v=pS5qWivnqKc&si=3GtznO4BATHGw1iU" target="_blank" rel="noopener">Youtube Music</a>
+          </div>
+        </div>
+      </div>
+      <div class="rc">
+        <div class="rc-art"><img src="/assets/sad_faded_cover_400x400.webp" alt="Faded cover art" onerror="this.style.display='none'"></div>
+        <div class="rc-body">
+          <div class="rc-top"><div><div class="rc-title">Faded</div><div class="rc-type">Single</div></div><div class="rc-year">14 Jun 2025</div></div>
+          <div class="dsp-links">
+            <a class="dsp-link" href="https://open.spotify.com/album/4bs9oY2ZYgCP5b5SqkbSwZ?si=UrKWTs26Rv-5VmlgYreOrw" target="_blank" rel="noopener">Spotify</a>
+            <a class="dsp-link" href="https://music.apple.com/nz/album/faded-single/1817879772" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/watch?v=D2KdT8dgvHg&si=zJ9NpXqVRZ5toMvZ" target="_blank" rel="noopener">Youtube Music</a>
+          </div>
+        </div>
+      </div>
+      <div class="rc">
+        <div class="rc-art"><img src="/assets/sad_anon_cover_400x400.webp" alt="ANON cover art" onerror="this.style.display='none'"></div>
+        <div class="rc-body">
+          <div class="rc-top"><div><div class="rc-title">ANON</div><div class="rc-type">Single</div></div><div class="rc-year">30 Apr 2025</div></div>
+          <div class="dsp-links">
+            <a class="dsp-link" href="https://open.spotify.com/album/7y3osUClWl8Nexdv0otqTA?si=FYHcBCwoRfqX0aI-6mKSwQ" target="_blank" rel="noopener">Spotify</a>
+            <a class="dsp-link" href="https://music.apple.com/nz/album/anon-single/1810484215" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/watch?v=SEr16YUh2B8&si=PKmuuGypUuvZhWkM" target="_blank" rel="noopener">Youtube Music</a>
+            
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="latest">
-      <div class="section-label">Recent releases</div>
+  <!-- SINGLES -->
+  <div id="tab-singles" class="tab-panel">
+    <div class="releases-grid">
+      <div class="rc"><div class="rc-art"><img src="/assets/sad_doomed_cover_400x400.webp" alt="Doomed" onerror="this.style.display='none'"></div><div class="rc-body"><div class="rc-top"><div><div class="rc-title">Doomed</div><div class="rc-type">Single</div></div><div class="rc-year">20 Dec 2025</div></div><div class="dsp-links"><a class="dsp-link" href="https://open.spotify.com/album/4nYMESdOzmcIJNObmPqyhc?si=f96bEayIQJ600g6p69jRtQ" target="_blank" rel="noopener">Spotify</a><a class="dsp-link" href="https://music.apple.com/nz/album/doomed-single/1857787358" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/watch?v=t-AAdjbOYi4&si=Q9f-kOziiAIM1yKs" target="_blank" rel="noopener">Youtube Music</a></div></div></div>
+      <div class="rc"><div class="rc-art"><img src="/assets/sad_morals_cover_400x400.webp" alt="Morals" onerror="this.style.display='none'"></div><div class="rc-body"><div class="rc-top"><div><div class="rc-title">Morals</div><div class="rc-type">Single</div></div><div class="rc-year">01 Oct 2025</div></div><div class="dsp-links"><a class="dsp-link" href="https://open.spotify.com/album/4w8eTXC9AbaHI5BdEzpP2G?si=kgitUqJzSE2lN3dte4gCZA" target="_blank" rel="noopener">Spotify</a><a class="dsp-link" href="https://music.apple.com/nz/album/morals-single/1831315341" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/watch?v=YvKa4S9_oyg&si=6zki-LYuLP7DmucO" target="_blank" rel="noopener">Youtube Music</a></div></div></div>
+      <div class="rc"><div class="rc-art"><img src="/assets/sad_ampersand_cover_400x400.webp" alt="&" onerror="this.style.display='none'"></div><div class="rc-body"><div class="rc-top"><div><div class="rc-title">&amp;</div><div class="rc-type">Single</div></div><div class="rc-year">01 Sep 2025</div></div><div class="dsp-links"><a class="dsp-link" href="https://open.spotify.com/album/383HydEzbrzOTOtXwtRWwd?si=jBA1tJ9yTw2bDrxDOEvDHA" target="_blank" rel="noopener">Spotify</a><a class="dsp-link" href="https://music.apple.com/nz/album/single/1831297753" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/watch?v=pS5qWivnqKc&si=3GtznO4BATHGw1iU" target="_blank" rel="noopener">Youtube Music</a></div></div></div>
+      <div class="rc"><div class="rc-art"><img src="/assets/sad_faded_cover_400x400.webp" alt="Faded" onerror="this.style.display='none'"></div><div class="rc-body"><div class="rc-top"><div><div class="rc-title">Faded</div><div class="rc-type">Single</div></div><div class="rc-year">14 Jun 2025</div></div><div class="dsp-links"><a class="dsp-link" href="https://open.spotify.com/album/4bs9oY2ZYgCP5b5SqkbSwZ?si=UrKWTs26Rv-5VmlgYreOrw" target="_blank" rel="noopener">Spotify</a><a class="dsp-link" href="https://music.apple.com/nz/album/faded-single/1817879772" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/watch?v=D2KdT8dgvHg&si=zJ9NpXqVRZ5toMvZ" target="_blank" rel="noopener">Youtube Music</a></div></div></div>
+      <div class="rc"><div class="rc-art"><img src="/assets/sad_anon_cover_400x400.webp" alt="ANON" onerror="this.style.display='none'"></div><div class="rc-body"><div class="rc-top"><div><div class="rc-title">ANON</div><div class="rc-type">Single</div></div><div class="rc-year">30 Apr 2025</div></div><div class="dsp-links"><a class="dsp-link" href="https://open.spotify.com/album/7y3osUClWl8Nexdv0otqTA?si=FYHcBCwoRfqX0aI-6mKSwQ" target="_blank" rel="noopener">Spotify</a><a class="dsp-link" href="https://music.apple.com/nz/album/anon-single/1810484215" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/watch?v=SEr16YUh2B8&si=PKmuuGypUuvZhWkM" target="_blank" rel="noopener">Youtube Music</a></div></div></div>
+    </div>
+  </div>
 
-      <div class="release-row" onclick="showPage('releases')">
-        <div class="r-art">
-          <!-- Replace src with actual artwork path e.g. /assets/anon.jpg -->
-          <img src="/assets/sad_anon_cover_400x400.webp" alt="ANON cover art" onerror="this.style.display='none'">
+  <!-- PROJECTS -->
+  <div id="tab-projects" class="tab-panel">
+    <div class="releases-grid">
+      <div class="rc" style="flex-direction:column">
+        <div style="display:flex">
+          <div class="rc-art"><img src="/assets/sad_lo_doomed_faded_cover_400x400.webp" alt="Lo, Doomed & Faded" onerror="this.style.display='none'"></div>
+          <div class="rc-body">
+            <div class="rc-top"><div><div class="rc-title">Lo, Doomed &amp; Faded</div><div class="rc-type">Album</div></div><div class="rc-year">31 Dec 2025</div></div>
+            <div class="dsp-links"><a class="dsp-link" href="https://open.spotify.com/album/3hVhExInvfNSkEo9ezOSsq?si=ISF3ClcPQaW6oba2GFgIyA" target="_blank" rel="noopener">Spotify</a><a class="dsp-link" href="https://music.apple.com/nz/album/lo-doomed-faded/1857636519" target="_blank" rel="noopener">Apple Music</a><a class="dsp-link" href="https://music.youtube.com/playlist?list=OLAK5uy_nYbVmqTYMdK_EiVigg9khaC9ZphlQp31g&si=aLBfmXzC4QC9SEoR" target="_blank" rel="noopener">Youtube Music</a></div>
+          </div>
         </div>
-        <div class="r-info">
-          <div class="r-title">ANON</div>
-          <div class="r-meta">Single · 2026</div>
+        <div class="rc-tracklist">
+          <div class="rc-track"><span class="rc-track-num">1</span><span>Lo</span><span class="rc-track-only">Album only</span></div>
+          <div class="rc-track"><span class="rc-track-num">2</span><span>Doomed</span></div>
+          <div class="rc-track"><span class="rc-track-num">3</span><span>&amp;</span></div>
+          <div class="rc-track"><span class="rc-track-num">4</span><span>Faded</span></div>
+          <div class="rc-track"><span class="rc-track-num">5</span><span>ANON</span></div>
+          <div class="rc-track"><span class="rc-track-num">6</span><span>Morals</span></div>
+          <div class="rc-track"><span class="rc-track-num">7</span><span>where do we go</span><span class="rc-track-only">Album only</span></div>
         </div>
-        <div class="release-tag">Out now</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYLISTS -->
+  <div id="tab-playlists" class="tab-panel">
+    <div class="releases-grid" style="padding-bottom:0">
+      <div class="section-label">Curated</div>
+    </div>
+    <div class="playlist-list">
+      <div class="pl-item" onclick="window.open('https://open.spotify.com/playlist/2oFjTcuIMPX7QsOCSJInkR?si=451070deea4e4c00','_blank')">
+        <div class="r-art" style="flex-shrink:0"><img src="/assets/playlist_no_4_playlist_cover_art_400x400.jpg" alt="My Playlist #4" onerror="this.style.display='none'"></div>
+        <div class="pl-info">
+          <div class="pl-title">My Playlist #4</div>
+          <div class="pl-meta">Rap excellence · Submissions: @_trulysad</div>
+        </div>
+        <div class="pl-saves">960 saves</div>
         <div class="release-arrow">→</div>
       </div>
-
-      <div class="release-row">
-        <div class="r-art-placeholder"></div>
-        <div class="r-info">
-          <div class="r-title" style="color:var(--faint)">Untitled</div>
-          <div class="r-meta">Single · 2026</div>
+      <div class="pl-item" onclick="window.open('https://open.spotify.com/playlist/6u57q4VfEsCqs52HQlbgis?si=e5e9cda5fb414a12','_blank')">
+        <div class="r-art" style="flex-shrink:0"><img src="/assets/running_on_e_playlist_cover_art_400x400.jpg" alt="Running on E" onerror="this.style.display='none'"></div>
+        <div class="pl-info">
+          <div class="pl-title">Running on E</div>
+          <div class="pl-meta">Euphoria meets hopelessness · Submissions: @_trulysad</div>
         </div>
-        <div class="release-tag coming">Forthcoming</div>
-        <div class="release-arrow" style="color:var(--faint)">→</div>
-      </div>
-    </div>
-
-    <div class="footer">
-      <div class="footer-copy">© 2023–2026 SAD VENTURES LIMITED</div>
-      <div class="footer-links">
-        <a class="footer-link" href="https://open.spotify.com" target="_blank" rel="noopener">Spotify</a>
-        <a class="footer-link" href="https://music.apple.com"  target="_blank" rel="noopener">Apple Music</a>
-        <a class="footer-link" href="https://youtube.com"      target="_blank" rel="noopener">Youtube</a>
-        <a class="footer-link" href="https://instagram.com"    target="_blank" rel="noopener">Instagram</a>
+        <div class="release-arrow">→</div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ UNTITLED ═══ -->
-  <div id="untitled" class="page">
-    <div class="page-hero">
-      <div class="section-label">S.AD</div>
-      <div class="page-title">Untitled</div>
-      <div class="page-desc">Notes, process, and perspective.</div>
+  <div class="footer" style="margin-top:2rem">
+    <div class="footer-copy">© 2023–2026 SAD Ventures Limited</div>
+    <div class="footer-links">
+      <a class="footer-link" href="https://open.spotify.com/artist/5hGsyji228sxPvOgRmqB62?si=cnXK65KESEeiuKkkVc1ieQ" target="_blank" rel="noopener">Spotify</a>
+      <a class="footer-link" href="https://music.apple.com/nz/artist/s-ad/1810440438" target="_blank" rel="noopener">Apple Music</a>
+      <a class="footer-link" href="https://www.youtube.com/channel/UClng_uh6ncoHfBFMhzNdmZw" target="_blank" rel="noopener">Youtube</a>
+      <a class="footer-link" href="https://www.instagram.com/_trulysad/" target="_blank" rel="noopener">Instagram</a>
     </div>
+  </div>
+</div>
 
-    <div class="post-list">
-      <div class="post-item">
-        <div class="post-date">02.06.23</div>
-        <div class="post-title">Untitled</div>
-        <div class="post-preview">What am I writing now, everything is coming out, side of things I can't pronounce...</div>
+<!-- STUDIOS -->
+<div id="studios" class="page">
+  <div class="page-hero">
+    <div class="section-label">SAD Ventures</div>
+    <div class="page-title">Studios</div>
+    <div class="page-desc">Content, conversation, and documentation from inside the work.</div>
+  </div>
+  <div class="latest" style="border-bottom:1px solid var(--border)">
+    <div class="release-row" onclick="window.open('https://www.youtube.com/@sad.studios','_blank')">
+      <div class="r-art"><img src="/assets/sad_studios_cover_art_400x400.png" alt="SAD Studios" onerror="this.style.display='none'"></div>
+      <div class="r-info">
+        <div class="r-title">SAD Studios</div>
+        <div class="r-meta">Youtube · @sad.studios</div>
       </div>
-      <div class="post-item">
-        <div class="post-date">28.05.23</div>
-        <div class="post-title">Untitled</div>
-        <div class="post-preview">Watch me slip back into old habits, I catch it but still unpacking what happen...</div>
-      </div>
-      <div class="post-item">
-        <div class="post-date">21.02.23</div>
-        <div class="post-title">Untitled</div>
-        <div class="post-preview">When shit become just like going through motions, starting to feel like I only have one emotion...</div>
-      </div>
-    </div>
-
-    <div class="footer" style="margin-top:3rem">
-      <div class="footer-copy">© 2023–2026 SAD VENTURES LIMITED</div>
-      <div class="footer-links">
-        <a class="footer-link" href="https://open.spotify.com" target="_blank" rel="noopener">Spotify</a>
-        <a class="footer-link" href="https://music.apple.com"  target="_blank" rel="noopener">Apple Music</a>
-        <a class="footer-link" href="https://youtube.com"      target="_blank" rel="noopener">Youtube</a>
-        <a class="footer-link" href="https://instagram.com"    target="_blank" rel="noopener">Instagram</a>
-      </div>
+      <div class="release-arrow">→</div>
     </div>
   </div>
 
-  <!-- ═══ RELEASES ═══ -->
-  <div id="releases" class="page">
-    <div class="page-hero">
-      <div class="section-label">S.AD</div>
-      <div class="page-title">Releases</div>
-    </div>
-
-    <div class="tab-bar">
-      <button class="tab active">All</button>
-      <button class="tab">Singles</button>
-      <button class="tab">Projects</button>
-    </div>
-
-    <div class="releases-grid">
-      <div class="releases-sublabel">Out now</div>
-
-      <div class="rc" onclick="window.open('https://links.trulysad.com/anon','_blank')">
-        <div class="rc-art">
-          <img src="/assets/sad_anon_cover_400x400.webp" alt="ANON cover art" onerror="this.style.display='none'">
-        </div>
-        <div class="rc-body">
-          <div class="rc-top">
-            <div>
-              <div class="rc-title">ANON</div>
-              <div class="rc-type">Single</div>
-            </div>
-            <div class="rc-year">2026</div>
-          </div>
-          <div class="rc-meta">
-            <div class="rc-meta-item"><span>Label</span>Rosebank Records</div>
-            <div class="rc-meta-item"><span>Dist.</span>DistroKid</div>
-            <div class="rc-meta-item"><span>Listen</span><span class="rc-link">links.trulysad.com/anon ↗</span></div>
-          </div>
-        </div>
+  <div class="latest" style="border-bottom:none;padding-top:0">
+    <div class="release-row" onclick="window.open('https://www.youtube.com/@sad.studios','_blank')">
+      <div class="r-art"><img src="/assets/unhappy_hour_cover_art_400x400.png" alt="The Unhappy Hour" onerror="this.style.display='none'"></div>
+      <div class="r-info">
+        <div class="r-title">The Unhappy Hour</div>
+        <div class="r-meta">Podcast · SAD Studios</div>
       </div>
-
-      <div class="releases-sublabel" style="margin-top:2.5rem">Forthcoming</div>
-
-      <div class="rc forthcoming">
-        <div class="rc-art"></div>
-        <div class="rc-body">
-          <div class="rc-top">
-            <div>
-              <div class="rc-title" style="color:var(--faint)">Untitled</div>
-              <div class="rc-type">Single</div>
-            </div>
-            <div class="rc-year">2026</div>
-          </div>
-          <div class="rc-meta">
-            <div class="rc-meta-item"><span>Label</span>Rosebank Records</div>
-            <div class="rc-meta-item"><span>Status</span>In progress</div>
-          </div>
-        </div>
-      </div>
+      <div class="release-arrow">→</div>
     </div>
-
-    <div class="footer">
-      <div class="footer-copy">© 2023–2026 SAD VENTURES LIMITED</div>
-      <div class="footer-links">
-        <a class="footer-link" href="https://open.spotify.com" target="_blank" rel="noopener">Spotify</a>
-        <a class="footer-link" href="https://music.apple.com"  target="_blank" rel="noopener">Apple Music</a>
-        <a class="footer-link" href="https://youtube.com"      target="_blank" rel="noopener">Youtube</a>
-        <a class="footer-link" href="https://instagram.com"    target="_blank" rel="noopener">Instagram</a>
+    <div class="release-row" onclick="window.open('https://www.youtube.com/@sad.studios','_blank')">
+      <div class="r-art"><img src="/assets/a_dull_life_cover_art_400x400.png" alt="A Dull Life" onerror="this.style.display='none'"></div>
+      <div class="r-info">
+        <div class="r-title">A Dull Life</div>
+        <div class="r-meta">Vlog · SAD Studios</div>
       </div>
+      <div class="release-arrow">→</div>
     </div>
   </div>
-
-  <!-- ═══ STUDIOS ═══ -->
-  <div id="studios" class="page">
-    <div class="page-hero">
-      <div class="section-label">SAD Ventures</div>
-      <div class="page-title">Studios</div>
-      <div class="page-desc">Content, conversation, and documentation from inside the work.</div>
-    </div>
-
-    <div class="studios-list">
-      <div class="studios-row" onclick="window.open('https://youtube.com','_blank')">
-        <div>
-          <div class="studios-name">The Unhappy Hour</div>
-          <div class="studios-type">Podcast · SAD Studios</div>
-        </div>
-        <div class="studios-ext">Youtube ↗</div>
-      </div>
-      <div class="studios-row" onclick="window.open('https://youtube.com','_blank')">
-        <div>
-          <div class="studios-name">A Dull Life</div>
-          <div class="studios-type">Vlog · SAD Studios</div>
-        </div>
-        <div class="studios-ext">Youtube ↗</div>
-      </div>
-    </div>
-
-    <div class="footer" style="margin-top:3rem">
-      <div class="footer-copy">© 2023–2026 SAD VENTURES LIMITED</div>
-      <div class="footer-links">
-        <a class="footer-link" href="https://open.spotify.com" target="_blank" rel="noopener">Spotify</a>
-        <a class="footer-link" href="https://music.apple.com"  target="_blank" rel="noopener">Apple Music</a>
-        <a class="footer-link" href="https://youtube.com"      target="_blank" rel="noopener">Youtube</a>
-        <a class="footer-link" href="https://instagram.com"    target="_blank" rel="noopener">Instagram</a>
-      </div>
+  <div class="footer" style="margin-top:3rem">
+    <div class="footer-copy">© 2023–2026 SAD Ventures Limited</div>
+    <div class="footer-links">
+      <a class="footer-link" href="https://open.spotify.com/artist/5hGsyji228sxPvOgRmqB62?si=cnXK65KESEeiuKkkVc1ieQ" target="_blank" rel="noopener">Spotify</a>
+      <a class="footer-link" href="https://music.apple.com/nz/artist/s-ad/1810440438" target="_blank" rel="noopener">Apple Music</a>
+      <a class="footer-link" href="https://www.youtube.com/channel/UClng_uh6ncoHfBFMhzNdmZw" target="_blank" rel="noopener">Youtube</a>
+      <a class="footer-link" href="https://www.instagram.com/_trulysad/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
+</div>
 
-  <script>
-    function showPage(id) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-link[id]').forEach(n => n.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      var el = document.getElementById('nav-' + id);
-      if (el) el.classList.add('active');
-      window.scrollTo(0, 0);
-    }
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-link[id]').forEach(n => n.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    var el = document.getElementById('nav-' + id);
+    if (el) el.classList.add('active');
+    window.scrollTo(0, 0);
+  }
 
-    // Tab switching on releases page (visual only — filter logic to add when catalogue grows)
-    document.querySelectorAll('.tab').forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
-  </script>
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + name).classList.add('active');
+  }
+
+  function togglePost(item) {
+    var preview = item.querySelector('.post-preview');
+    var toggle  = item.querySelector('.post-toggle');
+    var isOpen  = preview.classList.contains('open');
+    preview.classList.toggle('open');
+    toggle.textContent = isOpen ? '+ Read' : '− Close';
+  }
+</script>
 
 </body>
 </html>
