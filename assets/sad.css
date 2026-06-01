@@ -55,7 +55,7 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
 
 /* FOOTER */
 .footer { padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); margin-top: auto; }
-.footer-copy { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em; }
+.footer-copy { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
 .footer-links { display: flex; gap: 1.5rem; }
 .footer-link { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; transition: color var(--ease); }
 .footer-link:hover { color: var(--white); }
@@ -146,13 +146,13 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
 .back-link:hover { color: var(--dim); }
 .track-eyebrow { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--faint); text-transform: uppercase; margin-bottom: 1rem; }
 .track-title { font-size: clamp(40px, 7vw, 64px); font-weight: 300; line-height: 0.95; letter-spacing: -0.03em; color: var(--white); margin-bottom: 0.5rem; }
-.track-credits { font-family: var(--font-mono); font-size: 0.65rem; color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-faint); }
+.track-credits { font-family: var(--font-mono); font-size: 0.65rem; color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; }
 .lyrics-body { margin-bottom: 3.5rem; }
 .lyric-line { font-size: 0.9rem; color: var(--muted); line-height: 1; padding: 0.45rem 0.6rem; margin: 0 -0.6rem; cursor: default; transition: background var(--ease), color var(--ease); display: block; letter-spacing: 0.01em; }
 .lyric-line:hover { color: var(--off-white); background: rgba(255,255,255,0.04); }
 .lyric-break { display: block; height: 1.4rem; }
 .lyric-signoff { font-size: 0.9rem; color: var(--faint); line-height: 1; padding: 0.45rem 0.6rem; margin: 0 -0.6rem; display: block; margin-top: 1rem; }
-.lyrics-dsp-section { border-top: 1px solid var(--border-faint); padding-top: 2rem; }
+.lyrics-dsp-section { padding-bottom: 2rem; margin-bottom: 3rem; border-bottom: 1px solid var(--border-faint); }
 .lyrics-dsp-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--faint); text-transform: uppercase; margin-bottom: 1rem; }
 
 /* APPLE MUSIC PLAYER */

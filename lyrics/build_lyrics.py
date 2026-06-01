@@ -51,7 +51,7 @@ SCRIPT = '''\
   function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open');}
 </script>'''
 
-def page(slug, title, date, apple, spotify_url, youtube, spotify_id, lyrics_html):
+def page(slug, title, date, producer, apple, spotify_url, youtube, spotify_id, lyrics_html):
     t = html.escape(title)
     gtag = "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EV2ME4P7XY');"
     return f'''<!DOCTYPE html>
@@ -76,16 +76,15 @@ def page(slug, title, date, apple, spotify_url, youtube, spotify_id, lyrics_html
     <a class="back-link" href="/releases/">Back to Releases</a>
     <div class="track-eyebrow">S.AD - {date}</div>
     <div class="track-title">{t}</div>
-    <div class="track-credits">Produced by S.AD</div>
-    <div class="lyrics-body">{lyrics_html}</div>
+    <div class="track-credits">Produced by {html.escape(producer)}</div>
     <div class="lyrics-dsp-section">
-      <div class="lyrics-dsp-label">Listen</div>
       <div class="dsp-links">
         <a class="dsp-link" href="{apple}" target="_blank" rel="noopener">Apple Music</a>
         <a class="dsp-link" href="{spotify_url}" target="_blank" rel="noopener">Spotify</a>
         <a class="dsp-link" href="{youtube}" target="_blank" rel="noopener">Youtube Music</a>
       </div>
     </div>
+    <div class="lyrics-body">{lyrics_html}</div>
   </div>
 </main>
 <div class="player-bar">
@@ -96,43 +95,43 @@ def page(slug, title, date, apple, spotify_url, youtube, spotify_id, lyrics_html
 {FOOTER}{SCRIPT}</body></html>'''
 
 TRACKS = [
-    dict(slug='anon',          title='ANON',           date='30 Apr 2025',
+    dict(slug='anon',          title='ANON',           date='30 Apr 2025', producer='Eliezer Apfel',
          apple='https://music.apple.com/nz/album/anon-single/1810484215',
          spotify_url='https://open.spotify.com/album/7y3osUClWl8Nexdv0otqTA?si=FYHcBCwoRfqX0aI-6mKSwQ',
          spotify_id='7y3osUClWl8Nexdv0otqTA',
          youtube='https://music.youtube.com/watch?v=SEr16YUh2B8&si=PKmuuGypUuvZhWkM',
          file='sad_anon_lyrics.txt'),
-    dict(slug='morals',        title='Morals',          date='01 Oct 2025',
+    dict(slug='morals',        title='Morals',          date='01 Oct 2025', producer='Eliezer Apfel',
          apple='https://music.apple.com/nz/album/morals-single/1831315341',
          spotify_url='https://open.spotify.com/album/4w8eTXC9AbaHI5BdEzpP2G?si=kgitUqJzSE2lN3dte4gCZA',
          spotify_id='4w8eTXC9AbaHI5BdEzpP2G',
          youtube='https://music.youtube.com/watch?v=YvKa4S9_oyg&si=6zki-LYuLP7DmucO',
          file='sad_morals_lyrics.txt'),
-    dict(slug='doomed',        title='Doomed',          date='20 Dec 2025',
+    dict(slug='doomed',        title='Doomed',          date='20 Dec 2025', producer='Ten.Oh',
          apple='https://music.apple.com/nz/album/doomed-single/1857787358',
          spotify_url='https://open.spotify.com/album/4nYMESdOzmcIJNObmPqyhc?si=f96bEayIQJ600g6p69jRtQ',
          spotify_id='4nYMESdOzmcIJNObmPqyhc',
          youtube='https://music.youtube.com/watch?v=t-AAdjbOYi4&si=Q9f-kOziiAIM1yKs',
          file='sad_doomed_lyrics.txt'),
-    dict(slug='ampersand',     title='&',               date='01 Sep 2025',
+    dict(slug='ampersand',     title='&',               date='01 Sep 2025', producer='Eliezer Apfel',
          apple='https://music.apple.com/nz/album/single/1831297753',
          spotify_url='https://open.spotify.com/album/383HydEzbrzOTOtXwtRWwd?si=jBA1tJ9yTw2bDrxDOEvDHA',
          spotify_id='383HydEzbrzOTOtXwtRWwd',
          youtube='https://music.youtube.com/watch?v=pS5qWivnqKc&si=3GtznO4BATHGw1iU',
          file='sad_&_lyrics.txt'),
-    dict(slug='faded',         title='Faded',           date='14 Jun 2025',
+    dict(slug='faded',         title='Faded',           date='14 Jun 2025', producer='Eliezer Apfel',
          apple='https://music.apple.com/nz/album/faded-single/1817879772',
          spotify_url='https://open.spotify.com/album/4bs9oY2ZYgCP5b5SqkbSwZ?si=UrKWTs26Rv-5VmlgYreOrw',
          spotify_id='4bs9oY2ZYgCP5b5SqkbSwZ',
          youtube='https://music.youtube.com/watch?v=D2KdT8dgvHg&si=zJ9NpXqVRZ5toMvZ',
          file='sad_faded_lyrics.txt'),
-    dict(slug='lo',            title='Lo',              date='31 Dec 2025',
+    dict(slug='lo',            title='Lo',              date='31 Dec 2025', producer='Eliezer Apfel',
          apple='https://music.apple.com/nz/album/lo-doomed-faded/1857636519',
          spotify_url='https://open.spotify.com/album/3hVhExInvfNSkEo9ezOSsq?si=ISF3ClcPQaW6oba2GFgIyA',
          spotify_id='3hVhExInvfNSkEo9ezOSsq',
          youtube='https://music.youtube.com/playlist?list=OLAK5uy_nYbVmqTYMdK_EiVigg9khaC9ZphlQp31g&si=aLBfmXzC4QC9SEoR',
          file='01_sad_lo_lyrics.txt'),
-    dict(slug='where-do-we-go', title='where do we go', date='31 Dec 2025',
+    dict(slug='where-do-we-go', title='where do we go', date='31 Dec 2025', producer='Eliezer Apfel',
          apple='https://music.apple.com/nz/album/lo-doomed-faded/1857636519',
          spotify_url='https://open.spotify.com/album/3hVhExInvfNSkEo9ezOSsq?si=ISF3ClcPQaW6oba2GFgIyA',
          spotify_id='3hVhExInvfNSkEo9ezOSsq',
@@ -143,7 +142,7 @@ TRACKS = [
 for t in TRACKS:
     lyrics_text = open(os.path.join(INPUT, t['file'])).read()
     lyrics_html = to_html(lyrics_text)
-    html_out = page(t['slug'], t['title'], t['date'], t['apple'],
+    html_out = page(t['slug'], t['title'], t['date'], t['producer'], t['apple'],
                     t['spotify_url'], t['youtube'], t['spotify_id'], lyrics_html)
     out_dir = os.path.join(BASE, t['slug'])
     os.makedirs(out_dir, exist_ok=True)
